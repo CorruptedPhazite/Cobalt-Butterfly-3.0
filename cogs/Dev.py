@@ -111,7 +111,7 @@ class Owner(commands.Cog, name="owner"):
     @checks.is_owner()
     async def load(self, context: Context, cog: str) -> None:
         """
-        The bot will load the given cog.
+        Cobalt will load the given cog.
 
         :param context: The hybrid command context.
         :param cog: The name of the cog to load.
@@ -141,7 +141,7 @@ class Owner(commands.Cog, name="owner"):
     @checks.is_owner()
     async def unload(self, context: Context, cog: str) -> None:
         """
-        The bot will unload the given cog.
+        Cobalt will unload the given cog.
 
         :param context: The hybrid command context.
         :param cog: The name of the cog to unload.
@@ -171,7 +171,7 @@ class Owner(commands.Cog, name="owner"):
     @checks.is_owner()
     async def reload(self, context: Context, cog: str) -> None:
         """
-        The bot will reload the given cog.
+        Cobalt will reload the given cog.
 
         :param context: The hybrid command context.
         :param cog: The name of the cog to reload.
@@ -194,18 +194,18 @@ class Owner(commands.Cog, name="owner"):
         await context.send(embed=embed)
 
     @commands.hybrid_command(
-        name="shutdown",
-        description="Make the bot shutdown.",
+        name="exit",
+        description="Make Cobalt shutdown.",
     )
     @checks.is_owner()
-    async def shutdown(self, context: Context) -> None:
+    async def exit(self, context: Context) -> None:
         """
-        Shuts down the bot.
+        Cobalt's kill switch
 
         :param context: The hybrid command context.
         """
         embed = discord.Embed(
-            description="Shutting down. Bye! :wave:",
+            description="Shutting down.",
             color=0x9C84EF
         )
         await context.send(embed=embed)
@@ -213,31 +213,31 @@ class Owner(commands.Cog, name="owner"):
 
     @commands.hybrid_command(
         name="say",
-        description="The bot will say anything you want.",
+        description="Makes Cobalt Butterfly say whatever you want. DO NOT ABUSE THIS",
     )
-    @app_commands.describe(message="The message that should be repeated by the bot")
+    @app_commands.describe(message="The message that should be repeated by Cobalt")
     @checks.is_owner()
     async def say(self, context: Context, *, message: str) -> None:
         """
-        The bot will say anything you want.
+        Makes Cobalt Butterfly say whatever you want. DO NOT ABUSE THIS. Try to keep Cobalt in character when utilizing this feature
 
         :param context: The hybrid command context.
-        :param message: The message that should be repeated by the bot.
+        :param message: The message that should be repeated by Cobalt.
         """
         await context.send(message)
 
     @commands.hybrid_command(
         name="embed",
-        description="The bot will say anything you want, but within embeds.",
+        description="Makes Cobalt Butterfly say whatever you want in an embed. DO NOT ABUSE THIS",
     )
-    @app_commands.describe(message="The message that should be repeated by the bot")
+    @app_commands.describe(message="The message that should be repeated by Cobalt")
     @checks.is_owner()
     async def embed(self, context: Context, *, message: str) -> None:
         """
-        The bot will say anything you want, but using embeds.
+        Cobalt will say anything you want, but using embeds.
 
         :param context: The hybrid command context.
-        :param message: The message that should be repeated by the bot.
+        :param message: The message that should be repeated by Cobalt.
         """
         embed = discord.Embed(
             description=message,
@@ -252,7 +252,7 @@ class Owner(commands.Cog, name="owner"):
     @checks.is_owner()
     async def blacklist(self, context: Context) -> None:
         """
-        Lets you add or remove a user from not being able to use the bot.
+        Lets you add or remove a user from not being able to talk to Cobalt.
 
         :param context: The hybrid command context.
         """
@@ -267,13 +267,13 @@ class Owner(commands.Cog, name="owner"):
     @blacklist.command(
         base="blacklist",
         name="add",
-        description="Lets you add a user from not being able to use the bot.",
+        description="Lets you add a user from not being able to talk to Cobalt.",
     )
     @app_commands.describe(user="The user that should be added to the blacklist")
     @checks.is_owner()
     async def blacklist_add(self, context: Context, user: discord.User) -> None:
         """
-        Lets you add a user from not being able to use the bot.
+        Lets you add a user from not being able to talk to Cobalt.
 
         :param context: The hybrid command context.
         :param user: The user that should be added to the blacklist.
@@ -301,13 +301,13 @@ class Owner(commands.Cog, name="owner"):
     @blacklist.command(
         base="blacklist",
         name="remove",
-        description="Lets you remove a user from not being able to use the bot.",
+        description="Lets you remove a user from not being able to talk to Cobalt.",
     )
     @app_commands.describe(user="The user that should be removed from the blacklist.")
     @checks.is_owner()
     async def blacklist_remove(self, context: Context, user: discord.User) -> None:
         """
-        Lets you remove a user from not being able to use the bot.
+        Lets you remove a user from not being able to talk to Cobalt.
 
         :param context: The hybrid command context.
         :param user: The user that should be removed from the blacklist.
